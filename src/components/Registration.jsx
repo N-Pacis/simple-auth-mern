@@ -24,7 +24,7 @@ export default function Registration() {
                alert(response.slice(1,-1))
            })
            .catch(error=>{
-               var err = JSON.stringify(error.response.data).replace(/\\"/g, '')
+               var err = JSON.stringify(error.response).replace(/\\"/g, '')
                alert(err.slice(1,-1))
            })
     }

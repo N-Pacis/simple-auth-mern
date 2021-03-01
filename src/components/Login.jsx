@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import {loginSuccess} from "../actions/userActions"
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 export default function Login() {
+    const history = useHistory()
+    const dispatch = useDispatch()
     const api = axios.create({
         baseURL:`http://localhost:5000`
     })
@@ -19,6 +24,9 @@ export default function Login() {
         e.preventDefault();
         await api.post('/login',inputData)
            .then(resp=>{
+               const user = JSON.parse(resp.config.data)
+               dispatch(loginSuccess(user.Username))
+               history.push("/home")
                const response = JSON.stringify(resp.data)
                alert(response.slice(1,-1))
            }) 

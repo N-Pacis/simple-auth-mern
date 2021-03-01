@@ -2,6 +2,7 @@ import React from "react"
 import {NavLink,Switch,Route,Redirect} from "react-router-dom"
 import Registration from "./components/Registration"
 import Login from "./components/Login"
+import Home from "./components/Home"
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/"><Redirect to="/login"/></Route>
           <Route exact path="/register" component={Registration}/>
           <Route exact path="/login" component={Login}/>
+          <Route exact path="/home" component={Home} />
           <Route path="/"><Redirect to="/login"/></Route>
       </Switch>
     </>
